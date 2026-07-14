@@ -1,0 +1,47 @@
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SwmSeller.Name" class="control-label"></label>
+                <input asp-for="SwmSeller.Name" class="form-control" />
+                <span asp-validation-for="SwmSeller.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SwmSeller.Email" class="control-label"></label>
+                <input asp-for="SwmSeller.Email" class="form-control" />
+                <span asp-validation-for="SwmSeller.Email" class="text-danger"></span>      
+            </div>
+            <div class="form-group">
+                <label asp-for="SwmSeller.BirthDate" class="control-label"></label>
+                <input asp-for="SwmSeller.BirthDate" class="form-control" />
+                <span asp-validation-for="SwmSeller.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SwmSeller.BaseSalary" class="control-label"></label>
+                <input asp-for="SwmSeller.BaseSalary" class="form-control" />
+                <span asp-validation-for="SwmSeller.BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SwmSeller.SwmDepartmentId" class="control-label"></label>
+                <select asp-for="SwmSeller.SwmDepartmentId" asp-items="@(new SelectList(Model.SwmDepartments, "Id", "Name"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
